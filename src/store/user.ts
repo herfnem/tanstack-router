@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import useAuthToken from './auth';
+import { redirect } from '@tanstack/react-router';
 
 interface UserState {
   userId: number | null;
@@ -24,5 +25,8 @@ export const useUserStore = create<UserState>((set) => ({
     const { removeAuthToken } = useAuthToken.getState();
     removeAuthToken();
     set({ userId: null });
+    redirect({
+      to: '/',
+    });
   },
 }));

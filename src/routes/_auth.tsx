@@ -10,7 +10,7 @@ export const Route = createFileRoute('/_auth')({
     }
     const { userId: freshUserId } = useUserStore.getState();
     if (!authToken || !freshUserId) {
-      throw redirect({ to: '/login', search: { redirect: location.href } });
+      throw redirect({ to: '/', search: { redirect: location.href } });
     }
   },
   // loader: async () => {
